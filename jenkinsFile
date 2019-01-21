@@ -1,0 +1,18 @@
+parallel build1: {node{
+    deleteDir()
+    stage('build11') {
+        sh label: '', script: 'echo hello world > hello.txt'
+        archiveArtifacts '*.txt'
+        sleep 10
+    }
+    deleteDir()
+}},
+build2: {node{
+    deleteDir()
+    stage('build22') {
+        sh label: '', script: 'echo goodbye world > goodbye.txt'
+        archiveArtifacts '*.txt'
+        sleep 10
+    }
+    deleteDir()
+}}
